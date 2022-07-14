@@ -8,62 +8,43 @@ function ViewProducts() {
 
   useEffect(() => {
     fetchProducts()
-      .then((res) => setList(res))
+      .then((res) =>
+        setList(
+          res.filter((product) => {
+            if (!product.isUsed) {
+              return product
+            }
+          })
+        )
+      )
       .catch((error) => {
         console.error(error)
       })
   }, [])
 
-  const isUsed = list.filter((product) => {
-    if (!product.isUsed) {
-      return product
-    }
-  })
-
   return (
-    <div>
-      <table>
-        <th>
-          {' '}
-          Food
-          {isUsed.map((item) => (
-            <tr key={item.id}>{item.name} </tr>
-          ))}
-        </th>
-        <th>
-          {' '}
-          Open date
-          {isUsed.map((item) => (
-            <tr key={item.id}>
-              {moment(item.openDate).format('ddd D MMM YYYY')}{' '}
-            </tr>
-          ))}
-        </th>
-        <th>
-          {' '}
-          Expiry date
-          {isUsed.map((item) => (
-            <tr key={item.id}>
-              {moment(item.expiryDate).format('ddd D MMM YYYY')}{' '}
-            </tr>
-          ))}
-        </th>
-        <th>
-          {' '}
-          Compartment
-          {isUsed.map((item) => (
-            <tr key={item.id}>{item.compartment} </tr>
-          ))}
-        </th>
-        <th>
-          {' '}
-          Product type
-          {isUsed.map((item) => (
-            <tr key={item.id}>{item.productType} </tr>
-          ))}
-        </th>
-      </table>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Open date</th>
+          <th>Expiry date</th>
+          <th>Compartment</th>
+          <th>Product type</th>
+        </tr>
+      </thead>
+      <tbody>
+        {list.map((item) => (
+          <tr key={item.id}>
+            <td>{item.name} </td>
+            <td>{moment(item.openDate).format('ddd D MMM YYYY')}</td>
+            <td>{moment(item.expiryDate).format('ddd D MMM YYYY')}</td>
+            <td>{item.compartment} </td>
+            <td>{item.productType} </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   )
 }
 

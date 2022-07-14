@@ -1,7 +1,17 @@
 const connection = require('./connection')
 
 function getAllProducts(db = connection) {
-  return db('products').select()
+  return db('products')
+    .leftJoin('product_types', 'product_types.id', 'products.product_type_id')
+    .select(
+      'products.id as id',
+      'products.name as name',
+      'open_date as openDate',
+      'expiry_date as expiryDate',
+      'is_used as isUsed',
+      'compartment',
+      'product_types.name as productType'
+    )
 }
 
 function addProduct(product, db = connection) {
