@@ -1,29 +1,32 @@
-# Fullstack boilerplate
+# Cool As Organics
 
-## Getting Started
+## Links
+Miro:
+Figma:
 
-### From the Github UI
-See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use Github's feature to create a new repo from a template.
+## User stories
+On the home page I would like to see:
+* a list of fridge items that are expiring soonest
+* links to recipes that use the expiring ingredients
+* a button to add new items with manual or photo input
 
-### From the command line
+On the recipes page I would like to see:
+* multiple recipe options for the selected ingredient
+* tags that indicate DF, GF, vegan, etc options
+* a link that takes me to the recipe website
 
-```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
-cd [your-project-name]
-npm install # to install dependencies
-npm run dev # to start the dev server
-```
+On the product input page I would like to see:
+* a form where I can input the product details (name, dates, category, etc)
+* when I submit the form I would like to have some kind of confirmation that the product has been added
+* after a successful submission the form is cleared ready for the next input
 
-You can find the server running on [http://localhost:3000](http://localhost:3000).
+On the inventory page I would like to see:
+* a complete list of everything in the fridge/freezer
 
-## Details
+## API contract
 
-This repo includes:
+| Method | Endpoint | Description | Return value|
+| GET | /api/v1/products | Gets a list of all products | Array of product objects |
+| POST | /api/v1/products | Adds a new product | Id of the new product |
 
-* a single, simple API endpoint (`/api/v1/fruits`)
-* a single React component (`<App />`)
-* an example database module (`server/db/fruits.js`)
-* an API client module (`client/apis/fruits.js`)
-* configuration for Jest and testing library
-* configuration for server-side debugging in VS Code
-* a single client-side test (`client/components/App.test.js`)
+## Progress log
