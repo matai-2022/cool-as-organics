@@ -30,3 +30,23 @@ On the inventory page I would like to see:
 | POST | /api/v1/products | Adds a new product | Id of the new product |
 
 ## Progress log
+
+### Wednesday 13 July 2022
+We completed most of the planning and during the discussion considered a pivot towards a more B2B product that operated on a larger scale and without the consumer-oriented features like recipe suggestion. However, after talking through the concept decided that it was going to be too big in scope and decided to stick with original concept.
+### Thursday 14 July 2022
+Retrospective
+What went well:
+* planning and kanban
+* setting boundaries on free time
+* switching up the pair programming
+* pacing
+* wireframes
+* good break ratio
+
+What could be improved:
+Nothing so far.
+
+Actions:
+* swap pairs after lunch (ticket permitting)
+* keep taking breaks
+* stay away from Crew...
