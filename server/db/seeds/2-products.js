@@ -20,7 +20,7 @@ exports.seed = function (knex) {
           name: 'sirloin steak',
           open_date: '2022-07-13',
           expiry_date: '2022-07-14',
-          is_used: false,
+          is_used: true,
           product_type_id: 2,
           compartment: 'fridge',
         },
