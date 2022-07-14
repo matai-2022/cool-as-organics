@@ -18,11 +18,11 @@ router.post('/', async (req, res) => {
   try {
     const {
       name,
-      open_date,
-      expiry_date,
-      is_used,
+      openDate: open_date,
+      expiryDate: expiry_date,
+      isUsed: is_used,
       compartment,
-      product_type_id,
+      productTypeId: product_type_id,
     } = req.body
 
     const product = {
