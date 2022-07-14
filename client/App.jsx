@@ -1,6 +1,7 @@
 import React from 'react'
 import{Routes,Route}from'react-router-dom'
 
+import Nav from './subcomponents/Nav'
 import Index from './views/Index'
 import Recipes from './views/Recipes'
 import ViewProducts from './views/ViewProducts'
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
       <div className="app">
+        <Nav />
         <Routes>
           <Route path="/" element={<Index />}/>
           <Route path="/product/:id/recipes" element={<Recipes />}/>
