@@ -1,5 +1,5 @@
 import React from 'react'
-import{Routes,Route}from'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import Index from './views/Index'
 import Recipes from './views/Recipes'
@@ -11,10 +11,10 @@ function App() {
     <>
       <div className="app">
         <Routes>
-          <Route path="/" element={<Index />}/>
-          <Route path="/product/:id/recipes" element={<Recipes />}/>
-          <Route path="/products/view" element={<ViewProducts />}/>
-          <Route path="/products/add" element={<AddProduct />}/>
+          <Route path="/" element={<Index />} />
+          <Route path="/product/:id/recipes" element={<Recipes />} />
+          <Route path="/products/view" element={<ViewProducts />} />
+          <Route path="/products/add" element={<AddProduct />} />
         </Routes>
       </div>
     </>
