@@ -1,8 +1,8 @@
 # Cool As Organics
 
 ## Links
-Miro:
-Figma:
+Miro: https://miro.com/welcomeonboard/OHloMW9ZekZOaFVvS1hzdW1iT0RNOEFnRWlyS2hocWluSnlmTlo1MlNFY3pEQXBJZTQ1N3NsNm1KbndCUFFKVHwzNDU4NzY0NTI5MzUzMzU4NjA1?share_link_id=108513521950
+Figma: https://www.figma.com/file/1iu4uOUFE84ojz6Yx0MTW0/Cool-As-Organics?node-id=0%3A1
 
 ## User stories
 On the home page I would like to see:
@@ -28,6 +28,7 @@ On the inventory page I would like to see:
 | Method | Endpoint | Description | Return value|
 | GET | /api/v1/products | Gets a list of all products | Array of product objects |
 | POST | /api/v1/products | Adds a new product | Id of the new product |
+| GET | /api/v1/recipes | Gets an array of recipes for a given ingredient | Array of recipe objects |
 
 ## Progress log
 
@@ -50,3 +51,20 @@ Actions:
 * swap pairs after lunch (ticket permitting)
 * keep taking breaks
 * stay away from Crew...
+
+### Friday 15 July 2022
+Retrospective
+What went well:
+* learning and asking for help e.g. tailwind, moment, formik
+* code reviews
+* making good progress on MVP
+* good coding flow
+* solo coding
+* consolidating old concepts e.g. server-side API requests
+* getting outside for lunch
+
+What could be improved:
+* better commit messages
+
+Actions:
+* use a standard approach to commit messages i.e. present tense verb, and make them as informative (but concise) as possible
