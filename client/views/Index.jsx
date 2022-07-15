@@ -25,7 +25,7 @@ function Index() {
     <>
       <p className="some font">Products close to expiry!</p>
     <table> 
-      <thead>
+      <thead className="grid grid-cols-2 mt-5 pr-6 ml-6">
         <tr> 
           <th>Product</th>
           <th>Expiry Date</th>
@@ -33,7 +33,7 @@ function Index() {
       </thead>
       <tbody>
       {products.map((product) => (
-        <tr className="w-full grid grid-cols-2 gap-4 mt-5 pr-6" key={product.id}>
+        <tr className="grid grid-cols-2 gap-4 mt-5 pr-6 ml-6" key={product.id}>
           <td>{product.name}</td>
           <td>{moment(product.expiryDate).format('ddd D MMM YYYY')}</td>
         </tr>  
