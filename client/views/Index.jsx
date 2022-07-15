@@ -12,35 +12,35 @@ function Index() {
      const productsWithDates = products.map((product) => {
         return {...product, 
         openDate: moment(product.openDate),
-      expiryDate: moment(product.expiryDate)}
+        expiryDate: moment(product.expiryDate)}
       })
-      setProducts(sortByExpiryDate(productsWithDates))
+      setProducts(sortByExpiryDate(productsWithDates).slice(0,3))
     })
     .catch((error) => {
       console.error(error)
     })
   }, [])
-
-  console.log(sortByExpiryDate(products))
-
+  
   return (
-    <table> 
+    <>
       <p className="some font">Products close to expiry!</p>
+    <table> 
+      <thead>
         <tr> 
           <th>Product</th>
           <th>Expiry Date</th>
         </tr>
-    <table className=""> 
+      </thead>
+      <tbody>
       {products.map((product) => (
         <tr className="w-full grid grid-cols-2 gap-4 mt-5 pr-6" key={product.id}>
           <td>{product.name}</td>
           <td>{moment(product.expiryDate).format('ddd D MMM YYYY')}</td>
-        </tr>
-        
+        </tr>  
      ))}
+      </tbody>
     </table>
-  </table>
-
+  </>
   )
 }
 
