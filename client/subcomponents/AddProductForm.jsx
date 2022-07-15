@@ -3,6 +3,7 @@ import {Formik, Field, Form, useField, useFormikContext } from 'formik'
 import moment from 'moment'
 
 import { fetchProductTypes } from '../apis/productTypes'
+import { postProduct} from '../apis/products'
 
 function AddProductForm({initialData}) {
   const [productTypes, setProductTypes] = useState([])
@@ -16,12 +17,24 @@ function AddProductForm({initialData}) {
     }
   }, [])
 
+  async function handleSubmit(values) {
+    const {useableDays, ...product} = values
+    product.isUsed = false
+
+    try {
+      await postProduct(product)
+      // TODO Replace this alert with a microanimation that says "<name> added"
+      alert(`${values.name} added`)
+    }
+    catch(error) {
+      console.error(error.message)
+    }
+  }
+
   return (
   <Formik
     initialValues={initialData}
-    onSubmit={(values) => {
-      alert(JSON.stringify(values, null, 2))
-    }}>
+    onSubmit={handleSubmit}>
     <Form>
       <label className='label block'>
         Name
@@ -45,7 +58,8 @@ function AddProductForm({initialData}) {
 
       <label className='label block'>
         Product Type
-        <Field as='select' name='productType'>
+        <Field as='select' name='productTypeId'>
+          <option value=''></option>
           {productTypes.map(
             productType => <option key={productType.id} value={productType.id}>{productType.name}</option>
           )}
@@ -55,12 +69,13 @@ function AddProductForm({initialData}) {
       <label className='label block'>
         Compartment
         <Field as='select' name='compartment'>
+          <option value=''></option>
           <option value='fridge'>fridge</option>
           <option value='freezer'>freezer</option>
         </Field>
       </label>
 
-      <button>Add product</button>
+      <button type='submit'>Add product</button>
     </Form>
   </Formik>
   )

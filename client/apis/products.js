@@ -7,3 +7,10 @@ export function fetchProducts() {
     return res.body
   })
 }
+
+export function postProduct(product) {
+  return request
+    .post(rootUrl + '/products')
+    .send(product)
+    .then((res) => res.body)
+}
