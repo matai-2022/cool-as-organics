@@ -14,18 +14,22 @@ function Index() {
     })
   }, [])
   return (
-    <>
-    <div className="tailwind">
+    <table> 
+        <tr> 
+          <th>Product</th>
+          <th>Expiry Date</th>
+        </tr>
       <p className="some font">Products close to expiry!</p>
-    </div>
 
-    <div> 
-      {products.map((product) => {
-        console.log(product) 
-        return <p key={product.id}>{product.name} {product.expiryDate}</p>
-      })}  
-    </div>
-    </>
+    <table className="tailwind"> 
+      {products.map((product) => (
+        <tr className="tailwind" key={product.id}>
+          <td>{product.name}</td>
+          <td>{product.expiryDate}</td>
+        </tr>
+     ))}
+    </table>
+  </table>
   )
 }
 
