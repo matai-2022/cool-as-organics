@@ -27,9 +27,9 @@ On the inventory page I would like to see:
 
 | Method | Endpoint | Description | Return value|
 |---|---|---|---|
-| GET | /api/v1/products | Gets a list of all products | Array of product objects |
-| POST | /api/v1/products | Adds a new product | Array with new product id |
-| GET | /api/v1/recipes | Gets an array of recipes for a given ingredient | Array of recipe objects |
+| GET | /api/v1/products | Get a list of all products | Array of product objects |
+| POST | /api/v1/products | Add a new product | Array with new product id |
+| GET | /api/v1/recipes | Get recipes for a given ingredient | Array of recipe objects |
 
 ## Progress log
 
