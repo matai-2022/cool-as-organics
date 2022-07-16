@@ -9,3 +9,10 @@ export function fetchProducts() {
     return res.body.map((product) => convertDate(product))
   })
 }
+
+export function postProduct(product) {
+  return request
+    .post(rootUrl + '/products')
+    .send(product)
+    .then((res) => res.body)
+}
