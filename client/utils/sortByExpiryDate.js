@@ -1,3 +1,4 @@
 export default function sortByExpiryDate(products) {
-  return products.sort((a, b) => a.expiryDate - b.expiryDate)
+  const productsCopy = JSON.parse(JSON.stringify(products))
+  return productsCopy.sort((a, b) => a.expiryDate - b.expiryDate)
 }
