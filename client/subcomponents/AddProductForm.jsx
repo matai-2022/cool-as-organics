@@ -5,7 +5,7 @@ import moment from 'moment'
 import { fetchProductTypes } from '../apis/productTypes'
 import { postProduct} from '../apis/products'
 
-function AddProductForm({initialData}) {
+function AddProductForm({initialValues}) {
   const [productTypes, setProductTypes] = useState([])
 
   useEffect(async () => {
@@ -17,14 +17,15 @@ function AddProductForm({initialData}) {
     }
   }, [])
 
-  async function handleSubmit(values) {
+  async function handleSubmit(values, {resetForm}) {
     const {useableDays, ...product} = values
     product.isUsed = false
 
     try {
       await postProduct(product)
       // TODO Replace this alert with a microanimation that says "<name> added"
-      alert(`${values.name} added`)
+      // alert(`${values.name} added`)
+      resetForm()
     }
     catch(error) {
       console.error(error.message)
@@ -33,7 +34,7 @@ function AddProductForm({initialData}) {
 
   return (
   <Formik
-    initialValues={initialData}
+    initialValues={initialValues}
     onSubmit={handleSubmit}>
     <Form>
       <label className='label block'>
