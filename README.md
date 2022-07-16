@@ -69,3 +69,24 @@ What could be improved:
 
 Actions:  
 * use a standard approach to commit messages i.e. present tense verb, and make them as informative (but concise) as possible
+
+### Saturday 16 July 2022
+#### Retrospective
+What went well:  
+* Achieved MVP
+* Lots of learning about machine learning library, tailwind, progressive web apps, notifications, Figma
+* Good progress on the webcam setup and wiring up to ML prediction algorithm
+* Improved wireframes
+* Code reviews
+* Eating and making dumplings
+* Mindful breaks and meditation, getting outside, taking naps
+* Better commit messages
+* Comms and checkins
+
+What could be improved:  
+* Taking more fresh air breaks
+* Mindless eating
+
+Actions:  
+* Get outside at least once AS A TEAM
+* Less mindless eating
