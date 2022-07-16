@@ -10,8 +10,8 @@ function Recipes() {
 
   useEffect(() => {
     getRecipes(ingredient)
-      .then((response) => {
-        setRecipes(response)
+      .then((recipes) => {
+        setRecipes(recipes)
       })
       .catch((error) => console.error(error.message))
   }, [])
@@ -22,8 +22,8 @@ function Recipes() {
     <div>
       <ul>
         {recipes.results.map((item) => (
-          <>
-            <li key={item.id}>{item.name}</li>
+          <li key={item.id}>
+            {item.name}
             <img src={item.thumbnail_url} alt={item.thumbnail_url_text} />
             <ul>
               {item.tags.map((tag) => {
@@ -31,7 +31,7 @@ function Recipes() {
                   return <li key={tag.name}>{tag.name}</li>
               })}
             </ul>
-          </>
+          </li>
         ))}
       </ul>
     </div>
