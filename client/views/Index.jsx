@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import moment from 'moment'
+
 import {fetchProducts} from '../../client/apis/products'
 import sortByExpiryDate from '../utils/sortByExpiryDate'
+import { Link } from 'react-router-dom'
 
 function Index() {
   const [products, setProducts] = useState([])
@@ -9,12 +10,7 @@ function Index() {
   useEffect(() => {
     fetchProducts()
     .then(products => {
-     const productsWithDates = products.map((product) => {
-        return {...product, 
-        openDate: moment(product.openDate),
-        expiryDate: moment(product.expiryDate)}
-      })
-      setProducts(sortByExpiryDate(productsWithDates).slice(0,3))
+      setProducts(sortByExpiryDate(products).slice(0,3))
     })
     .catch((error) => {
       console.error(error)
@@ -35,7 +31,8 @@ function Index() {
       {products.map((product) => (
         <tr className="grid grid-cols-2 gap-4 mt-5 pr-6 ml-6" key={product.id}>
           <td>{product.name}</td>
-          <td>{moment(product.expiryDate).format('ddd D MMM YYYY')}</td>
+          <td>{product.expiryDate.format('ddd D MMM YYYY')}</td>
+          <td> <Link to= {`/products/${product.name}/recipes`}>Recipes</Link> </td>
         </tr>  
      ))}
       </tbody>
