@@ -33,51 +33,58 @@ function AddProductForm({initialValues}) {
   }
 
   return (
-  <Formik
+    <Formik
     initialValues={initialValues}
     onSubmit={handleSubmit}>
-    <Form>
-      <label className='label block'>
-        Name
-        <Field name='name' type='text'/>
-      </label>
+      <div className='flex justify-center box-content items-center w-30'>
+      <Form className='w-1/2 px-20 my-32 space-y-9 border-8 border-yellow-300 rounded focus-yellow-400 drop-shadow-md'> 
+        <h1 className='font-bold text-3xl text-center pt-10'>Add a product!</h1>
+        <label className='label block text-gray-600 mt-8'>
+          Name
+          <Field name='name' type='text' className='border border-grey-600 block py-2 px-4 w-rounded w-1/2'/>
+        </label>
 
-      <label className='label block'>
-        Open Date
-        <Field name='openDate' type='date'/>
-      </label>
+        <div className='flex space-x-8 w-full'>
+          <label className='label block text-gray-600'>
+            Open Date
+            <Field name='openDate' type='date' className='border border-grey-600 block py-2 px-4 w-rounded w-full'/>
+          </label>
 
-      <label className='label block'>
-        Expiry Date
-        <ExpiryDate name='expiryDate' type='date' />
-      </label>
+          <label className='label block text-gray-600'>
+            Expiry Date
+            <ExpiryDate name='expiryDate' type='date' className='border border-grey-600 block py-2 px-4 w-rounded w-full' />
+          </label>
+        </div>
 
-      <label className='label block'>
-        Useable Days
-        <UseableDays name='useableDays' type='number' />
-      </label>
+        <label className='label block text-gray-600'>
+          Useable Days
+          <UseableDays name='useableDays' type='number' className='border border-grey-600 block py-2 px-4 w-rounded w-1/4' />
+        </label>
 
-      <label className='label block'>
-        Product Type
-        <Field as='select' name='productTypeId'>
-          <option value=''></option>
-          {productTypes.map(
-            productType => <option key={productType.id} value={productType.id}>{productType.name}</option>
-          )}
-        </Field>
-      </label>
-      
-      <label className='label block'>
-        Compartment
-        <Field as='select' name='compartment'>
-          <option value=''></option>
-          <option value='fridge'>fridge</option>
-          <option value='freezer'>freezer</option>
-        </Field>
-      </label>
-
-      <button type='submit'>Add product</button>
-    </Form>
+        <label className='label block text-gray-600'>
+          Product Type
+          <Field as='select' name='productTypeId' className='border border-grey-600 block py-2 px-4 w-rounded w-1/3'>
+            <option value=''></option>
+            {productTypes.map(
+              productType => <option key={productType.id} value={productType.id}>{productType.name}</option>
+            )}
+          </Field>
+        </label>
+        
+        <label className='label block text-gray-600'>
+          Compartment
+          <Field as='select' name='compartment' className='border border-grey-600 block py-2 px-4 w-rounded w-1/3'>
+            <option value=''></option>
+            <option value='fridge'>fridge</option>
+            <option value='freezer'>freezer</option>
+          </Field>
+        </label>
+        
+        <div className=''>
+        <button type='submit' className='hover:bg-yellow-300 rounded mb-8'>Add product</button>
+        </div>
+      </Form>
+    </div>
   </Formik>
   )
 }
