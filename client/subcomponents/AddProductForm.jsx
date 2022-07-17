@@ -106,7 +106,7 @@ function ExpiryDate(props) {
       setFieldValue(
         props.name, 
         moment(openDate)
-          .add(useableDays, 'days')
+          .add(lifespan, 'days')
           .format('yyyy-MM-DD'))
   }, [lifespan])
 
