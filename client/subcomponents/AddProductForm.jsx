@@ -3,9 +3,8 @@ import {Formik, Field, Form, useField, useFormikContext } from 'formik'
 import moment from 'moment'
 
 import { fetchProductTypes } from '../apis/productTypes'
-import { postProduct} from '../apis/products'
 
-function AddProductForm({initialValues}) {
+function AddProductForm({initialValues, handleSubmit}) {
   const [productTypes, setProductTypes] = useState([])
 
   useEffect(async () => {
@@ -16,21 +15,6 @@ function AddProductForm({initialValues}) {
       console.error(error.message)
     }
   }, [])
-
-  async function handleSubmit(values, {resetForm}) {
-    const {useableDays, ...product} = values
-    product.isUsed = false
-
-    try {
-      await postProduct(product)
-      // TODO Replace this alert with a microanimation that says "<name> added"
-      // alert(`${values.name} added`)
-      resetForm()
-    }
-    catch(error) {
-      console.error(error.message)
-    }
-  }
 
   return (
   <Formik
@@ -53,8 +37,8 @@ function AddProductForm({initialValues}) {
       </label>
 
       <label className='label block'>
-        Useable Days
-        <UseableDays name='useableDays' type='number' />
+        Lifespan
+        <Lifespan name='lifespan' type='number' />
       </label>
 
       <label className='label block'>
@@ -85,9 +69,9 @@ function AddProductForm({initialValues}) {
 export default AddProductForm
 
 // Custom Formik component
-// useableDays field displays the difference in days between openDate and expiryDate
+// lifespan field displays the difference in days between openDate and expiryDate
 // It will update itself if the user changes either openDate or expiryDate
-function UseableDays(props) {
+function Lifespan(props) {
   const {
     values: {openDate, expiryDate},
     setFieldValue
@@ -107,24 +91,24 @@ function UseableDays(props) {
 }
 
 // Custom Formik component
-// expiryDate field displays the expiry date based on openDate + useableDays
-// It will update itself if the user changes either openDate or useableDays
+// expiryDate field displays the expiry date based on openDate + lifespan
+// It will update itself if the user changes either openDate or lifespan
 function ExpiryDate(props) {
   const {
-    values: {openDate, useableDays},
+    values: {openDate, lifespan},
     setFieldValue
   } = useFormikContext()
 
   const [field] = useField(props.name)
 
   useEffect(() => {
-    (openDate && useableDays) && 
+    (openDate && lifespan) && 
       setFieldValue(
         props.name, 
         moment(openDate)
           .add(useableDays, 'days')
           .format('yyyy-MM-DD'))
-  }, [useableDays])
+  }, [lifespan])
 
   return <input {...props} {...field} />
 }
