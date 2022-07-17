@@ -1,5 +1,9 @@
 # Cool As Organics
 
+## Versions
+1.0.0: Released Sat Jul 16  
+Commit 9320d77a3d99edbdecd451577f406508d26cafbc
+
 ## Links
 Miro: https://miro.com/welcomeonboard/OHloMW9ZekZOaFVvS1hzdW1iT0RNOEFnRWlyS2hocWluSnlmTlo1MlNFY3pEQXBJZTQ1N3NsNm1KbndCUFFKVHwzNDU4NzY0NTI5MzUzMzU4NjA1?share_link_id=108513521950  
 Figma: https://www.figma.com/file/1iu4uOUFE84ojz6Yx0MTW0/Cool-As-Organics?node-id=0%3A1
