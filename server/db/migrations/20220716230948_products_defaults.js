@@ -1,10 +1,10 @@
 exports.up = function (knex) {
   return knex.schema.createTable('product_defaults', (table) => {
     table.increments('id')
-    table.string('name').references('products.name')
+    table.string('name')
     table.integer('lifespan')
-    table.string('category').references('product_types.name')
-    table.string('compartment').references('products.compartment')
+    table.integer('product_type_id').references('product_types.id')
+    table.string('compartment')
   })
 }
 
