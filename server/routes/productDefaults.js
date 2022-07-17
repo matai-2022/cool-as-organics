@@ -6,7 +6,6 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
-    console.log(req.query.product)
     const productDefaults = await db.getProductDefaultsByName(req.query.product)
     res.json(productDefaults)
   } catch (error) {

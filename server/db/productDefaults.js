@@ -15,6 +15,7 @@ function getProductDefaultsByName(productName, db = connection) {
       'lifespan',
       'compartment'
     )
+    .first()
 }
 
 module.exports = { getProductDefaultsByName }
