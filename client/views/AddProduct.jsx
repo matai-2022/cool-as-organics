@@ -15,7 +15,7 @@ function AddProduct() {
   }
 
   async function handleSubmit(values, {resetForm}) {
-    const {useableDays, ...product} = values
+    const {lifespan, ...product} = values
     product.isUsed = false
 
     try {
