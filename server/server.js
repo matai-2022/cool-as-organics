@@ -4,6 +4,7 @@ const path = require('path')
 const productRoutes = require('./routes/products')
 const productTypeRoutes = require('./routes/productTypes')
 const recipeRoutes = require('./routes/recipes')
+const productDefaultsRoutes = require('./routes/productDefaults')
 
 const server = express()
 
@@ -11,9 +12,10 @@ server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
 server.use('/api/v1/products', productRoutes)
-server.use('/api/v1/productTypes', productTypeRoutes)
-
+server.use('/api/v1/product_types', productTypeRoutes)
 server.use('/api/v1/recipes', recipeRoutes)
+server.use('/api/v1/product_defaults', productDefaultsRoutes)
+
 server.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'))
 })
