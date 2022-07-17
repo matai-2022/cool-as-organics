@@ -58,7 +58,7 @@ function PhotoCapture() {
 
   async function handleSubmit(values) {
     const {lifespan, ...product} = values
-    product.isUsed = false
+    product.status = 'open'
 
     try {
       await postProduct(product)
