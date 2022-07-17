@@ -3,6 +3,7 @@ import moment from 'moment'
 
 import predictProduct from '../utils/predictProduct'
 import { postProduct} from '../apis/products'
+import { getProductDefaultsByName } from '../apis/productDefaults'
 
 import Modal from '../subcomponents/Modal.jsx'
 import AddProductForm from '../subcomponents/AddProductForm'
@@ -39,14 +40,9 @@ function PhotoCapture() {
         const predictedProduct = await predictProduct(canvas)
 
         // TODO Replace hardcoded values with database values
-        const product = {
-          name: predictedProduct,
-          openDate: moment().format('yyyy-MM-DD'),
-          lifespan: 5,
-          productTypeId: 1,
-          compartment: 'fridge',
-        }
-
+        const product = await getProductDefaultsByName(predictedProduct)
+        product.openDate = moment().format('yyyy-MM-DD')
+        
         // Dispatching PRODUCT_PREDICTED will display AddProductForm pre-populated with values from product object
         dispatch({type: 'PRODUCT_PREDICTED', status: 'PRODUCT_PREDICTED', payload: product })
       } catch(error) {
