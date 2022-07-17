@@ -39,7 +39,6 @@ function PhotoCapture() {
         canvas.getContext('2d').drawImage(capturedImage, 0, 0)
         const predictedProduct = await predictProduct(canvas)
 
-        // TODO Replace hardcoded values with database values
         const product = await getProductDefaultsByName(predictedProduct)
         product.openDate = moment().format('yyyy-MM-DD')
         
