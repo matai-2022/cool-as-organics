@@ -9,7 +9,7 @@ function AddProduct() {
     name: '',
     expiryDate: '',
     openDate: '',
-    useableDays: 0,
+    lifespan: 0,
     productTypeId: '',
     compartment: ''
   }
