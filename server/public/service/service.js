@@ -12,7 +12,7 @@ self.addEventListener('activate', async (event) => {
     userVisibleOnly: true,
   })
 
-  console.log('subscribed')
+  console.log('subscribed to push service')
 
   await fetch('/api/v1/subscription', {
     method: 'post',
@@ -23,6 +23,7 @@ self.addEventListener('activate', async (event) => {
 
 self.addEventListener('push', (event) => {
   self.registration.showNotification('You have items expiring', {
+    // TODO This data will eventually come from the database, accessed via event.data.json()
     body: 'Sirlon steak, banana +2 items\nTap for recipes and tips',
   })
 })

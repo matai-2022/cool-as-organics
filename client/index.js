@@ -17,7 +17,6 @@ if ('serviceWorker' in navigator) {
     .register('/service/service.js', { type: 'module' })
     .then((registration) => {
       console.log('service worker registered')
-      console.log(registration)
     })
     .catch((error) => {
       console.log(error.message)
@@ -26,7 +25,7 @@ if ('serviceWorker' in navigator) {
 
 Notification.requestPermission()
   .then((permission) => {
-    console.log(permission)
+    console.log('notification permission', permission)
   })
   .catch((error) => {
     console.log(error.message)
