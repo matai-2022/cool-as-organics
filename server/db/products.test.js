@@ -17,9 +17,9 @@ afterAll(async () => {
 })
 
 describe('getAllProducts', () => {
-  test('returns all products', async () => {
+  test('returns all open products', async () => {
     const products = await db.getAllProducts(testDb)
-    expect(products).toHaveLength(4)
+    expect(products).toHaveLength(3)
   })
 })
 

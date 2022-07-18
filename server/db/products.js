@@ -1,6 +1,6 @@
 const connection = require('./connection')
 
-function getAllProducts(db = connection) {
+function getOpenProducts(db = connection) {
   return db('products')
     .leftJoin('product_types', 'product_types.id', 'products.product_type_id')
     .select(
@@ -12,10 +12,11 @@ function getAllProducts(db = connection) {
       'compartment',
       'product_types.name as productType'
     )
+    .where('status', 'open')
 }
 
 function addProduct(product, db = connection) {
   return db('products').insert(product)
 }
 
-module.exports = { getAllProducts, addProduct }
+module.exports = { getOpenProducts, addProduct }

@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
-    const products = await db.getAllProducts()
+    const products = await db.getOpenProducts()
     res.json(products)
   } catch (error) {
     console.error(error.message)
