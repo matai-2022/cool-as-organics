@@ -3,11 +3,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Add colors here
+        darkYellow: '#F8CB42',
+        lightYellow: '#FFFBF0',
+        darkGreen: '#038753,',
       },
       fontFamily: {
-        // serif: ['"Roboto Slab"', 'serif'],
-        // sans: ['Quicksand', 'sans-serif'],
+        'reem': ['Reem Kufi', 'sans-serif'],
       },
     },
   },
