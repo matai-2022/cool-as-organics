@@ -23,6 +23,10 @@ function ViewProducts() {
   }, [])
 
   return (
+    <>
+    <h2 className="text-slate-900">All products in the fridge</h2>
+   <div className="w-3/4 ..."></div>
+   <div className="whitespace-pre-line ..."></div>
     <table className="border-2">
       <thead className="border-2">
         <tr className="divide-y-2">
@@ -33,7 +37,7 @@ function ViewProducts() {
           <th>Product type</th>
         </tr>
       </thead>
-      <tbody className=" divide-y-2">
+      <tbody className="divide-y-2">
         {list.map((item) => (
           <tr className=" divide-x-2" key={item.id}>
             <td>{item.name} </td>
@@ -45,6 +49,7 @@ function ViewProducts() {
         ))}
       </tbody>
     </table>
+    </>
   )
 }
 
