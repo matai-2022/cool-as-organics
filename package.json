@@ -41,8 +41,11 @@
     "formik": "^2.2.9",
     "knex": "^2.1.0",
     "moment": "^2.29.4",
+    "node-cron": "^3.0.0",
+    "path": "^0.12.7",
     "sqlite3": "^5.0.8",
-    "superagent": "7.1.1"
+    "superagent": "7.1.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",
