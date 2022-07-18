@@ -6,3 +6,5 @@ server/public/bundle.js.map
 server/public/main.css
 .env
 tags
+server/subscription.json
+server/vapidkey.json

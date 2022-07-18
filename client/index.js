@@ -11,3 +11,23 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('app')
   )
 })
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/service/service.js', { type: 'module' })
+    .then((registration) => {
+      console.log('service worker registered')
+      console.log(registration)
+    })
+    .catch((error) => {
+      console.log(error.message)
+    })
+}
+
+Notification.requestPermission()
+  .then((permission) => {
+    console.log(permission)
+  })
+  .catch((error) => {
+    console.log(error.message)
+  })
