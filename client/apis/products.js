@@ -18,3 +18,7 @@ export function postProduct(product) {
     .send(product)
     .then((res) => res.body)
 }
+
+export function patchProduct(product) {
+  return request.patch(rootUrl + '/products').send(product)
+}
