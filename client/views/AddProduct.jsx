@@ -16,7 +16,6 @@ function AddProduct() {
 
   async function handleSubmit(values, {resetForm}) {
     const {lifespan, ...product} = values
-    product.isUsed = false
 
     try {
       await postProduct(product)
