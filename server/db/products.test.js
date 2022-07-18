@@ -29,7 +29,7 @@ describe('addProduct', () => {
       name: 'apple',
       open_date: '2022-07-14',
       expiry_date: '2022-07-16',
-      is_used: 0,
+      status: 'open',
       compartment: 'fridge',
       product_type_id: 3,
     }
