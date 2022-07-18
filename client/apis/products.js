@@ -11,6 +11,8 @@ export function fetchProducts() {
 }
 
 export function postProduct(product) {
+  product.status = 'open'
+  
   return request
     .post(rootUrl + '/products')
     .send(product)
