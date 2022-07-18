@@ -8,7 +8,7 @@ function getAllProducts(db = connection) {
       'products.name as name',
       'open_date as openDate',
       'expiry_date as expiryDate',
-      'is_used as isUsed',
+      'status',
       'compartment',
       'product_types.name as productType'
     )
