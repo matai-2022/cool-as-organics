@@ -39,6 +39,13 @@ function App() {
     }
   }
 
+  const currentDate = Math.floor(Date.now())
+
+  const options = {
+    body: 'heres the time',
+    timestamp: currentDate,
+  }
+
   function notifyMe() {
     if (!('Notification' in window)) {
       alert('This browser does not support desktop notification')
@@ -47,7 +54,11 @@ function App() {
     // Let's check whether notification permissions have already been granted
     else if (Notification.permission === 'granted') {
       // If it's okay let's create a notification
-      new Notification('Hi there granted!')
+      const n = new Notification(
+        `Hi there granted!${options.timestamp}`,
+        options
+      )
+      console.log(n)
     }
 
     // Otherwise, we need to ask the user for permission
