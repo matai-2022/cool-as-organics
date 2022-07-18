@@ -22,16 +22,23 @@ module.exports = {
       directory: path.join(__dirname, 'seeds'),
     },
   },
-
   production: {
-    client: 'postgresql',
-    connection: process.env.DATABASE_URL,
-    pool: {
-      min: 2,
-      max: 10,
+    client: 'sqlite3',
+    connection: {
+      filename: path.join(__dirname, 'dev.sqlite3'),
     },
-    migrations: {
-      tableName: 'knex_migrations',
-    },
+    useNullAsDefault: true,
   },
+
+  // production: {
+  //   client: 'postgresql',
+  //   connection: process.env.DATABASE_URL,
+  //   pool: {
+  //     min: 2,
+  //     max: 10,
+  //   },
+  //   migrations: {
+  //     tableName: 'knex_migrations',
+  //   },
+  // },
 }
