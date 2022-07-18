@@ -22,10 +22,13 @@ self.addEventListener('activate', async (event) => {
 })
 
 self.addEventListener('push', (event) => {
-  self.registration.showNotification('Yolo', {
-    body: event.data.text(),
-    dir: 'rtl',
+  self.registration.showNotification('You have items expiring', {
+    body: 'Sirlon steak, banana +2 items\nTap for recipes and tips',
   })
+})
+
+self.addEventListener('notificationclick', (event) => {
+  clients.openWindow('http://localhost:3000')
 })
 
 // urlB64ToUint8Array is a magic function that will encode the base64 public key
