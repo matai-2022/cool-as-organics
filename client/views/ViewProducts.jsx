@@ -1,25 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 
-import { fetchProducts } from '../../client/apis/products'
+import { getProducts } from '../../client/apis/products'
 
 function ViewProducts() {
-  const [list, setList] = useState([])
+  const [products, setProducts] = useState([])
 
-  useEffect(() => {
-    fetchProducts()
-      .then((res) =>
-        setList(
-          res.filter((product) => {
-            if (!product.isUsed) {
-              return product
-            }
-          })
-        )
-      )
-      .catch((error) => {
-        console.error(error)
-      })
+  useEffect(async () => {
+    try {
+      setProducts(await getProducts())
+    } catch(error) {
+      console.error(error.message)
+    }
   }, [])
 
   return (
@@ -34,7 +26,7 @@ function ViewProducts() {
         </tr>
       </thead>
       <tbody className=" divide-y-2">
-        {list.map((item) => (
+        {products.map((item) => (
           <tr className=" divide-x-2" key={item.id}>
             <td>{item.name} </td>
             <td>{moment(item.openDate).format('ddd D MMM YYYY')}</td>

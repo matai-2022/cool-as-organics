@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import {fetchProducts} from '../../client/apis/products'
+import {getProducts} from '../../client/apis/products'
 import sortByExpiryDate from '../utils/sortByExpiryDate'
 import { Link } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ function Index() {
   const [products, setProducts] = useState([])
   
   useEffect(() => {
-    fetchProducts()
+    getProducts()
     .then(products => {
       setProducts(sortByExpiryDate(products).slice(0,3))
     })
