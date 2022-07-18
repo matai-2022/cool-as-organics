@@ -39,6 +39,8 @@ On the inventory page I would like to see:
 
 ### Wednesday 13 July 2022
 We completed most of the planning and during the discussion considered a pivot towards a more B2B product that operated on a larger scale and without the consumer-oriented features like recipe suggestion. However, after talking through the concept decided that it was going to be too big in scope and decided to stick with original concept.
+
+Researched React Native as a platform for our product - specifically for the notification and photo capture features. We realized we could still implement these using React DOM.
 ### Thursday 14 July 2022
 #### Retrospective
 What went well:  
@@ -94,3 +96,24 @@ What could be improved:
 Actions:  
 * Get outside at least once AS A TEAM
 * Less mindless eating
+
+### Monday 18 July 2022
+#### Retrospective
+What went well:  
+* Pair programming
+* Photo capture working
+* Good progress on notifications system
+* Meditation at lunchtime
+* Played Crew AS A TEAM
+* Timeboxing
+* Consolidating Tailwind knowledge
+* Code reviews
+* Consistent breaks
+
+What would be improved:  
+* Getting unblocked faster
+
+Actions:  
+* Continue with pair programming (one pair on styling / one pair on logic)
+* Focus on getting style branches to PR stage
+* Merge codebase in the morning and do manual testing
