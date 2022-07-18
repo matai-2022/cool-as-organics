@@ -12,6 +12,7 @@ function getAllProducts(db = connection) {
       'compartment',
       'product_types.name as productType'
     )
+    .where('status', 'open')
 }
 
 function addProduct(product, db = connection) {
