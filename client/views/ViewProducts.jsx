@@ -20,7 +20,7 @@ function ViewProducts() {
         openProducts.map((product) => product.name)
       )
 
-      openProducts.map((openProduct) => {
+      openProducts.forEach((openProduct) => {
         const statuses = stocktake
           .filter((product) => product.name === openProduct.name)
           .map((item) => item.status)

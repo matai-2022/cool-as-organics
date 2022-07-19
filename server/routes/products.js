@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 router.get('/by_name', async (req, res) => {
   try {
     const products = await db.getProductsByName(req.query.products)
-    console.log(req.query.products)
+
     res.json(products)
   } catch (error) {
     console.error(error.message)
