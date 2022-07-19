@@ -47,7 +47,7 @@ function ViewProducts() {
 
   return (
     <>
-    <h1 className='font-bold mb-9 mt-9 text-center'>Current items in your fridge</h1>
+    <h1 className='mb-4 mt-4 text-center text-3xl'>Current items</h1>
     <div className='flex justify-center'>
       <table className= 'w-11/12 border rounded border-zinc-200 bg-white mt-4'>
         <thead className='border-b-2 border-zinc'>
