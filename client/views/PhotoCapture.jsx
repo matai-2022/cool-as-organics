@@ -1,15 +1,17 @@
 import React, {useEffect, useReducer, useRef} from 'react'
 import moment from 'moment'
 
-import predictProduct from '../utils/predictProduct'
+import {getModel, predictProduct} from '../utils/PhotoCaptureHelper'
 import { postProduct} from '../apis/products'
 import { getProductDefaultsByName } from '../apis/productDefaults'
 
 import Modal from '../subcomponents/Modal.jsx'
-import AddProductForm from '../subcomponents/AddProductForm'
+import AddProductForm from '../subcomponents/AddProductForm.jsx'
+import Conditional from '../subcomponents/Conditional.jsx'
 
 const initialState = {
-  status: 'IDLE',
+  status: 'LOADING',
+  model: null,
   product: {},
   error: ''
 }
@@ -18,31 +20,35 @@ function PhotoCapture() {
   const videoRef = useRef()
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  // Run once on startup
   useEffect(async () => {
     // Load the device camera stream and assign it to the video element
-    videoRef.current.srcObject = await navigator.mediaDevices.getUserMedia({
-     audio: false, 
-     video: {
-      facingMode: 'environment',
-      width: 240,
-      height: 240
-     }
+    // Load machine learning model
+    Promise.all([
+      navigator.mediaDevices.getUserMedia({
+        audio: false, video: {facingMode: 'environment', aspectRatio: 1}}),
+      getModel()
+    ]).then(values => {
+      videoRef.current.srcObject = values[0]
+      dispatch({type: 'LOADED', status: 'IDLE', payload: values[1]})
+    }).catch((error) => {
+      dispatch({type: 'ERROR', status: 'ERROR', payload: error.message})
+      console.error(error.message)
     })
   }, [])
 
+  // Run only when image is captured
   useEffect(async () => {
     if (state.status === 'IMAGE_CAPTURED') {
-      // Capture an image from the camera and wrap it in a canvas element to pass to the machine learning API
       try {
-        const capturedImage = await createImageBitmap(videoRef.current)
-        const canvas = document.createElement('canvas')
-        canvas.getContext('2d').drawImage(capturedImage, 0, 0)
-        const predictedProduct = await predictProduct(canvas)
+        // Get the best guess
+        const predictedProduct = await predictProduct(state.model, videoRef.current)
 
+        // Look up product defaults
         const product = await getProductDefaultsByName(predictedProduct)
         product.openDate = moment().format('yyyy-MM-DD')
         
-        // Dispatching PRODUCT_PREDICTED will display AddProductForm pre-populated with values from product object
+        // Display AddProductForm pre-populated with product defaults
         dispatch({type: 'PRODUCT_PREDICTED', status: 'PRODUCT_PREDICTED', payload: product })
       } catch(error) {
         console.error(error.message)
@@ -51,6 +57,7 @@ function PhotoCapture() {
     }
   })
 
+  // Form handler
   async function handleSubmit(values) {
     const {lifespan, ...product} = values
 
@@ -64,26 +71,46 @@ function PhotoCapture() {
   }
 
   return (
-    <>
-    {/* scale-x-[-1] class mirrors the webcam display for a better user experience */}
+  <div className='h-screen flex flex-col items-center bg-black'>
+    {/* Camera */}
+    {/* scale-x-[-1] class mirrors the camera display for a better user experience */}
     <video ref={videoRef} autoPlay className='scale-x-[-1]' />
 
-    <button 
-      onClick={() => {dispatch({type: 'IMAGE_CAPTURED', status: 'IMAGE_CAPTURED'})}}>
-        Add Product
-    </button>
+    <Conditional condition={state.status !== 'LOADING'}>
+      {/* Shutter button */}
+      <div className='w-20 h-20 rounded-full bg-black border-white border-4 mt-4 flex justify-center items-center'>
+        <button 
+          className='w-16 h-16 rounded-full bg-white text-white'
+          onClick={() => {dispatch({type: 'IMAGE_CAPTURED', status: 'IMAGE_CAPTURED'})}}>
+            Scan
+        </button>
+      </div>
+    </Conditional>
 
-    {/* TODO Replace this messsage with a proper loading indicator */}
-    {state.status === 'IMAGE_CAPTURED' && <p>Predicting product...</p>}
+    {/* Wait indicator for scanning */}
+    <Conditional condition={state.status === 'IMAGE_CAPTURED'}>
+      <p className='text-white mt-4'>Scanning...</p>
+    </Conditional>
 
-    {state.status === 'ERROR' && <p>{state.error}</p>}
+    {/* Error message */}
+    <Conditional condition={state.status === 'ERROR'}>
+      <p className='text-white mt-4'>{state.error}</p>
+    </Conditional>
 
-    {state.status === 'PRODUCT_PREDICTED' &&
-    <Modal>
-      <AddProductForm initialValues={state.product} handleSubmit={handleSubmit} />
-    </Modal>
-    }
-    </>
+    {/* Add product form */}
+    {/* Form displays after scanning is complete */}
+    <Conditional condition={state.status === 'PRODUCT_PREDICTED'}>
+      <Modal>
+        <div className='h-full w-full flex flex-col bg-white'>
+          <button className='self-end mt-4 mr-4'
+                  onClick={() => {dispatch({type: 'IDLE', status: 'IDLE'})}}>
+                  x</button>
+          <AddProductForm initialValues={state.product} handleSubmit={handleSubmit} />
+        </div>
+      </Modal>
+    </Conditional>
+
+  </div>
   )
 }
 
@@ -94,9 +121,10 @@ export default PhotoCapture
 function reducer(state, action) {
   const actions = {}
 
-  actions['IMAGE_CAPTURED'] = () => {
+  actions['LOADED'] = () => {
     return {...state,
-      status: action.status
+    status: action.status,
+    model: action.payload
     }
   }
 
@@ -104,6 +132,12 @@ function reducer(state, action) {
     return {...state,
       status: action.status,
       product: {}
+    }
+  }
+
+  actions['IMAGE_CAPTURED'] = () => {
+    return {...state,
+      status: action.status
     }
   }
 
