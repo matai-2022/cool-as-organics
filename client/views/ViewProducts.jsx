@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-import { getProducts, patchProduct } from '../../client/apis/products'
+import {
+  getProducts,
+  patchProduct,
+  getProductsByName,
+} from '../../client/apis/products'
 import sortByExpiryDate from '../utils/sortByExpiryDate'
+import calculateWastage from '../utils/calculateWastage'
 
 import ProductItem from '../subcomponents/ProductItem.jsx'
 
@@ -10,7 +15,20 @@ function ViewProducts() {
 
   useEffect(async () => {
     try {
-      setProducts(sortByExpiryDate(await getProducts()))
+      const openProducts = await getProducts()
+      const stocktake = await getProductsByName(
+        openProducts.map((product) => product.name)
+      )
+
+      openProducts.map((openProduct) => {
+        const statuses = stocktake
+          .filter((product) => product.name === openProduct.name)
+          .map((item) => item.status)
+
+        openProduct.wastage = calculateWastage(statuses)
+      })
+
+      setProducts(sortByExpiryDate(openProducts))
     } catch (error) {
       console.error(error.message)
     }

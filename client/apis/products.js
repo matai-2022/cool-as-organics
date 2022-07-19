@@ -22,3 +22,10 @@ export function postProduct(product) {
 export function patchProduct(product) {
   return request.patch(rootUrl + '/products').send(product)
 }
+
+export function getProductsByName(products) {
+  return request
+    .get(rootUrl + '/products/by_name')
+    .query(products.map((product) => `products=${product}&`).join(''))
+    .then((res) => res.body)
+}

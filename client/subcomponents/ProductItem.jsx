@@ -21,7 +21,7 @@ function ProductItem(props) {
     <tr className=" divide-x-2" key={product.id}>
       <td>{product.name} </td>
       <td>{moment(product.expiryDate).format('ddd D MMM YYYY')}</td>
-      <td>{product.wastage} </td>
+      <td>{`${product.wastage * 100} %`}</td>
       <td>
         <button name="discarded" onClick={handleClick}>
           Discard
