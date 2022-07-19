@@ -31,6 +31,7 @@ function ViewProducts() {
         <tr className="divide-y-2">
           <th>Name</th>
           <th>Expiry date</th>
+          <th>Wastage</th>
           <th></th>
           <th></th>
         </tr>
