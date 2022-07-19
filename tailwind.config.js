@@ -8,7 +8,8 @@ module.exports = {
         darkGreen: '#038753,',
       },
       fontFamily: {
-        'reem': ['Reem Kufi', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        modak: ['Modak', 'cursive'],
       },
     },
   },
