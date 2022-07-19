@@ -11,20 +11,18 @@ import Stats from './views/Stats'
 
 function App() {
   return (
-    <>
-      <div className="app">
-        <Nav />
-        <Routes>
-          <Route path="*" element={<Index />} />
-          <Route path="/" element={<Index />} />
-          <Route path="/products/:ingredient/recipes" element={<Recipes />} />
-          <Route path="/products/view" element={<ViewProducts />} />
-          <Route path="/products/add" element={<AddProduct />} />
-          <Route path="/products/add/photo" element={<PhotoCapture />} />
-          <Route path="/products/stats" element={<Stats />} />
-        </Routes>
-      </div>
-    </>
+  <>
+  <Nav />
+  <Routes>
+    <Route path="*" element={<Index />} />
+    <Route path="/" element={<Index />} />
+    <Route path="/products/:ingredient/recipes" element={<Recipes />} />
+    <Route path="/products/view" element={<ViewProducts />} />
+    <Route path="/products/add" element={<AddProduct />} />
+    <Route path="/products/add/photo" element={<PhotoCapture />} />
+    <Route path="/products/stats" element={<Stats />} />
+  </Routes>
+  </>
   )
 }
 
