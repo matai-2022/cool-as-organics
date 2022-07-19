@@ -29,6 +29,10 @@ function getOpenProducts(db = connection) {
     .where('status', 'open')
 }
 
+function getProductsByName(products, db = connection) {
+  return db('products').whereIn('name', products).select('name', 'status')
+}
+
 function addProduct(product, db = connection) {
   return db('products').insert(product)
 }
@@ -37,4 +41,10 @@ function updateProduct(id, product, db = connection) {
   return db('products').where('id', id).update(product)
 }
 
-module.exports = { getAllProducts, getOpenProducts, addProduct, updateProduct }
+module.exports = {
+  getAllProducts,
+  getOpenProducts,
+  getProductsByName,
+  addProduct,
+  updateProduct,
+}
