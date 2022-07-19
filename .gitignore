@@ -8,3 +8,4 @@ server/public/main.css
 tags
 server/subscription.json
 server/vapidkey.json
+*.DS_Store

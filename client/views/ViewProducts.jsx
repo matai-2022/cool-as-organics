@@ -10,6 +10,8 @@ import calculateWastage from '../utils/calculateWastage'
 
 import ProductItem from '../subcomponents/ProductItem.jsx'
 
+const headers = ['Name','Expiry','Wastage', 'Status']
+
 function ViewProducts() {
   const [products, setProducts] = useState([])
 
@@ -44,28 +46,32 @@ function ViewProducts() {
   }
 
   return (
-    <table className="border-2">
-      <thead className="border-2">
-        <tr className="divide-y-2">
-          <th>Name</th>
-          <th>Expiry date</th>
-          <th>Wastage</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody className=" divide-y-2">
-        {products.map((product) => {
+    <>
+    <h1 className='font-bold mb-9 mt-9 text-center'>Current items in your fridge</h1>
+    <div className='flex justify-center'>
+      <table className= 'w-11/12 border rounded border-zinc-200 bg-white mt-4'>
+        <thead className='border-b-2 border-zinc'>
+          <tr className='text-left'>
+            {headers.map(header => {return (
+            <th className='leading-10 font-medium px-4 text-sm' 
+            key={header}>{header}</th>
+            )})}
+          </tr>
+       </thead>
+
+      <tbody>
+          {products.map((product) => {
           return (
-            <ProductItem
+              <ProductItem 
               product={product}
               key={product.id}
-              updateProduct={updateProduct}
-            />
+              updateProduct={updateProduct}/>
           )
-        })}
-      </tbody>
-    </table>
+          })}
+        </tbody>
+      </table>
+      </div>
+    </>
   )
 }
 
