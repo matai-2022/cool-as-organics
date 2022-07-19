@@ -4,7 +4,7 @@ exports.up = function (knex) {
     table.string('name')
     table.string('open_date')
     table.string('expiry_date')
-    table.boolean('is_used')
+    table.string('status')
     table.string('compartment')
     table.integer('product_type_id').references('product_types.id')
   })

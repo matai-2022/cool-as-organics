@@ -1,5 +1,9 @@
 # Cool As Organics
 
+## Versions
+1.0.0: Released Sat Jul 16  
+Commit 9320d77a3d99edbdecd451577f406508d26cafbc
+
 ## Links
 Miro: https://miro.com/welcomeonboard/OHloMW9ZekZOaFVvS1hzdW1iT0RNOEFnRWlyS2hocWluSnlmTlo1MlNFY3pEQXBJZTQ1N3NsNm1KbndCUFFKVHwzNDU4NzY0NTI5MzUzMzU4NjA1?share_link_id=108513521950  
 Figma: https://www.figma.com/file/1iu4uOUFE84ojz6Yx0MTW0/Cool-As-Organics?node-id=0%3A1
@@ -35,6 +39,8 @@ On the inventory page I would like to see:
 
 ### Wednesday 13 July 2022
 We completed most of the planning and during the discussion considered a pivot towards a more B2B product that operated on a larger scale and without the consumer-oriented features like recipe suggestion. However, after talking through the concept decided that it was going to be too big in scope and decided to stick with original concept.
+
+Researched React Native as a platform for our product - specifically for the notification and photo capture features. We realized we could still implement these using React DOM.
 ### Thursday 14 July 2022
 #### Retrospective
 What went well:  
@@ -69,3 +75,45 @@ What could be improved:
 
 Actions:  
 * use a standard approach to commit messages i.e. present tense verb, and make them as informative (but concise) as possible
+
+### Saturday 16 July 2022
+#### Retrospective
+What went well:  
+* Achieved MVP
+* Lots of learning about machine learning library, tailwind, progressive web apps, notifications, Figma
+* Good progress on the webcam setup and wiring up to ML prediction algorithm
+* Improved wireframes
+* Code reviews
+* Eating and making dumplings
+* Mindful breaks and meditation, getting outside, taking naps
+* Better commit messages
+* Comms and checkins
+
+What could be improved:  
+* Taking more fresh air breaks
+* Mindless eating
+
+Actions:  
+* Get outside at least once AS A TEAM
+* Less mindless eating
+
+### Monday 18 July 2022
+#### Retrospective
+What went well:  
+* Pair programming
+* Photo capture working
+* Good progress on notifications system
+* Meditation at lunchtime
+* Played Crew AS A TEAM
+* Timeboxing
+* Consolidating Tailwind knowledge
+* Code reviews
+* Consistent breaks
+
+What would be improved:  
+* Getting unblocked faster
+
+Actions:  
+* Continue with pair programming (one pair on styling / one pair on logic)
+* Focus on getting style branches to PR stage
+* Merge codebase in the morning and do manual testing

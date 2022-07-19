@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
-    const products = await db.getAllProducts()
+    const products = await db.getOpenProducts()
     res.json(products)
   } catch (error) {
     console.error(error.message)
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
       name,
       openDate: open_date,
       expiryDate: expiry_date,
-      isUsed: is_used,
+      status,
       compartment,
       productTypeId: product_type_id,
     } = req.body
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
       name,
       open_date,
       expiry_date,
-      is_used,
+      status,
       compartment,
       product_type_id,
     }

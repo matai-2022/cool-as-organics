@@ -1,6 +1,6 @@
 {
   "name": "cool-as-organics",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "server/index.js",
   "license": "MIT",
   "scripts": {
@@ -36,6 +36,7 @@
     ]
   },
   "dependencies": {
+    "@teachablemachine/image": "^0.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.17.2",
     "formik": "^2.2.9",
