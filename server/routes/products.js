@@ -1,6 +1,7 @@
 const express = require('express')
 
 const db = require('../db/products')
+const helper = require('./productsHelper')
 
 const router = express.Router()
 
@@ -29,6 +30,30 @@ router.get('/by_name', async (req, res) => {
     const products = await db.getProductsByName(req.query.products)
 
     res.json(products)
+  } catch (error) {
+    console.error(error.message)
+    res.sendStatus(500)
+  }
+})
+
+router.get('/top_purchased', async (req, res) => {
+  try {
+    const allProducts = await db.getAllProducts()
+    const top = helper.getTopPurchased(allProducts)
+
+    res.json(top)
+  } catch (error) {
+    console.error(error.message)
+    res.sendStatus(500)
+  }
+})
+
+router.get('/top_wasted', async (req, res) => {
+  try {
+    const allProducts = await db.getAllProducts()
+    const top = helper.getTopWasted(allProducts)
+
+    res.json(top)
   } catch (error) {
     console.error(error.message)
     res.sendStatus(500)
