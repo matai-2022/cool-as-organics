@@ -7,6 +7,7 @@ import Recipes from './views/Recipes'
 import ViewProducts from './views/ViewProducts'
 import AddProduct from './views/AddProduct'
 import PhotoCapture from './views/PhotoCapture'
+import Stats from './views/Stats'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/products/view" element={<ViewProducts />} />
           <Route path="/products/add" element={<AddProduct />} />
           <Route path="/products/add/photo" element={<PhotoCapture />} />
+          <Route path="/products/stats" element={<Stats />} />
         </Routes>
       </div>
     </>

@@ -29,3 +29,13 @@ export function getProductsByName(products) {
     .query(products.map((product) => `products=${product}&`).join(''))
     .then((res) => res.body)
 }
+
+export function getTopPurchasedProducts() {
+  return request
+    .get(rootUrl + '/products/top_purchased')
+    .then((res) => res.body)
+}
+
+export function getTopWastedProducts() {
+  return request.get(rootUrl + '/products/top_wasted').then((res) => res.body)
+}
