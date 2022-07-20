@@ -5,6 +5,7 @@ function ProductItem(props) {
   const { product, updateProduct } = props
 
   function handleClick(event) {
+    console.log(event.target.name)
     event.preventDefault()
 
     const updatedProduct = {
@@ -20,7 +21,7 @@ function ProductItem(props) {
   return (
     <tr
       key={product.id}
-      className="border border-zinc leading-10 border-collapse"
+      className="h-10 border border-zinc leading-10 border-collapse "
     >
       <td className="px-4">{product.name}</td>
 
@@ -29,16 +30,23 @@ function ProductItem(props) {
       </td>
 
       <td className="text-right pr-4">
-        <button name="discarded" onClick={handleClick} className="px-4">
-          <img
-            src="/images/rubbish-bin.png"
-            alt="rubbish icon"
-            className="h-4 w-4"
-          />
+        <button
+          className="material-symbols-outlined mr-2"
+          name="discarded"
+          onClick={handleClick}
+        >
+          delete
         </button>
-        <button name="used" onClick={handleClick} className="">
+        <button
+          className="material-symbols-outlined ml-2"
+          name="used"
+          onClick={handleClick}
+        >
+          done
+        </button>
+        {/* <button name="used" onClick={handleClick} className="">
           <img src="/images/tick.png" alt="tick icon" className="h-4 w-4" />
-        </button>
+        </button> */}
       </td>
     </tr>
   )

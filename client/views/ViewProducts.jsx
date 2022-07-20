@@ -13,6 +13,7 @@ const headers = ['Name', 'Expiry']
 
 function ViewProducts() {
   const [products, setProducts] = useState([])
+  console.log(products)
 
   useEffect(async () => {
     try {
