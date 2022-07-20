@@ -42,6 +42,24 @@ exports.seed = function (knex) {
           product_type_id: 1,
           compartment: 'freezer',
         },
+        {
+          id: 5,
+          name: 'banana',
+          open_date: '2022-07-14',
+          expiry_date: '2022-07-16',
+          status: 'discarded',
+          product_type_id: 3,
+          compartment: 'fridge',
+        },
+        {
+          id: 6,
+          name: 'banana',
+          open_date: '2022-07-14',
+          expiry_date: '2022-07-16',
+          status: 'used',
+          product_type_id: 3,
+          compartment: 'fridge',
+        },
       ])
     })
 }

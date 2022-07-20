@@ -117,3 +117,23 @@ Actions:
 * Continue with pair programming (one pair on styling / one pair on logic)
 * Focus on getting style branches to PR stage
 * Merge codebase in the morning and do manual testing
+### Tuesday 19 July 2022
+#### Retrospective
+What went well:  
+* Finished features logic (stats, stocktake, and notifications)
+* Pair programming
+* Testing on phone and pivoting to mobile-first design
+* Good pace, not stressed
+
+What would be improved:  
+* More sleep (apart from Jingjing who had a great sleep)
+* Considering accessibility before commiting to code
+* More team input on UI styling
+* More consistency with design language (scales, colors)
+
+Actions:  
+* Everyone on UI styling
+* Look at developing scale presets for colors, font sizes, spacing, etc
+* Running design choices past the team before commiting to code
+* Get more sleep tonight
+* Testing, testing, testing (manual)

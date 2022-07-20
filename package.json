@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "main": "server/index.js",
   "license": "MIT",
+  "engines": {"node": "16.x"},
   "scripts": {
     "start": "node server",
     "test": "jest",
@@ -13,7 +14,7 @@
     "dev:css": "tailwindcss -i client/css/main.css -o server/public/main.css --watch",
     "build": "run-p build:client build:server",
     "build:client": "npm run webpack -- --mode production",
-    "build:server": "npm run knex -- migrate:latest",
+    "build:server": "npm run knex -- migrate:latest seed:run",
     "lint": "eslint --ext .js,.jsx .",
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js"
@@ -43,7 +44,8 @@
     "knex": "^2.1.0",
     "moment": "^2.29.4",
     "sqlite3": "^5.0.8",
-    "superagent": "7.1.1"
+    "superagent": "7.1.1",
+    "web-push": "^3.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.6",

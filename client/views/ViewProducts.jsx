@@ -1,42 +1,77 @@
 import React, { useEffect, useState } from 'react'
-import moment from 'moment'
 
-import { getProducts } from '../../client/apis/products'
+import {
+  getProducts,
+  patchProduct,
+  getProductsByName,
+} from '../../client/apis/products'
+import sortByExpiryDate from '../utils/sortByExpiryDate'
+import calculateWastage from '../utils/calculateWastage'
+
+import ProductItem from '../subcomponents/ProductItem.jsx'
+
+const headers = ['Name','Expiry','Wastage', 'Status']
 
 function ViewProducts() {
   const [products, setProducts] = useState([])
 
   useEffect(async () => {
     try {
-      setProducts(await getProducts())
-    } catch(error) {
+      const openProducts = await getProducts()
+      const stocktake = await getProductsByName(
+        openProducts.map((product) => product.name)
+      )
+
+      openProducts.forEach((openProduct) => {
+        const statuses = stocktake
+          .filter((product) => product.name === openProduct.name)
+          .map((item) => item.status)
+
+        openProduct.wastage = calculateWastage(statuses)
+      })
+
+      setProducts(sortByExpiryDate(openProducts))
+    } catch (error) {
       console.error(error.message)
     }
   }, [])
 
+  async function updateProduct(product) {
+    try {
+      await patchProduct(product)
+      setProducts(sortByExpiryDate(await getProducts()))
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   return (
-    <table className="border-2">
-      <thead className="border-2">
-        <tr className="divide-y-2">
-          <th>Product</th>
-          <th>Open date</th>
-          <th>Expiry date</th>
-          <th>Compartment</th>
-          <th>Product type</th>
-        </tr>
-      </thead>
-      <tbody className=" divide-y-2">
-        {products.map((item) => (
-          <tr className=" divide-x-2" key={item.id}>
-            <td>{item.name} </td>
-            <td>{moment(item.openDate).format('ddd D MMM YYYY')}</td>
-            <td>{moment(item.expiryDate).format('ddd D MMM YYYY')}</td>
-            <td>{item.compartment} </td>
-            <td>{item.productType} </td>
+    <>
+    <h1 className='mb-4 mt-4 text-center text-3xl'>Current items</h1>
+    <div className='flex justify-center'>
+      <table className= 'w-11/12 border rounded border-zinc-200 bg-white mt-4'>
+        <thead className='border-b-2 border-zinc'>
+          <tr className='text-left'>
+            {headers.map(header => {return (
+            <th className='leading-10 font-medium px-4 text-sm' 
+            key={header}>{header}</th>
+            )})}
           </tr>
-        ))}
-      </tbody>
-    </table>
+       </thead>
+
+      <tbody>
+          {products.map((product) => {
+          return (
+              <ProductItem 
+              product={product}
+              key={product.id}
+              updateProduct={updateProduct}/>
+          )
+          })}
+        </tbody>
+      </table>
+      </div>
+    </>
   )
 }
 

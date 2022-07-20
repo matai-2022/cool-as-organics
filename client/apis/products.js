@@ -18,3 +18,24 @@ export function postProduct(product) {
     .send(product)
     .then((res) => res.body)
 }
+
+export function patchProduct(product) {
+  return request.patch(rootUrl + '/products').send(product)
+}
+
+export function getProductsByName(products) {
+  return request
+    .get(rootUrl + '/products/by_name')
+    .query(products.map((product) => `products=${product}&`).join(''))
+    .then((res) => res.body)
+}
+
+export function getTopPurchasedProducts() {
+  return request
+    .get(rootUrl + '/products/top_purchased')
+    .then((res) => res.body)
+}
+
+export function getTopWastedProducts() {
+  return request.get(rootUrl + '/products/top_wasted').then((res) => res.body)
+}
