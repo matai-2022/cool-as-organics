@@ -10,7 +10,7 @@ const menu = [
   {name: 'Stats', route: '/products/stats'}]
 
 function Nav() {
-  const [activeTab, setActiveTab] = useState('')
+  const [activeTab, setActiveTab] = useState('Home')
 
   return (
     <div className='flex justify-between font-medium text-black bg-white px-4 pb-2'>
