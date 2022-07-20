@@ -14,41 +14,21 @@ function getTopPurchased(products) {
 }
 
 function getTopWasted(products) {
-  let totals = {}
+  const productNames = [...new Set(products.map((product) => product.name))]
 
-  // Loop through entire products array and count up discarded, used, and open for each product
-  for (let i = 0; i < products.length; i++) {
-    const product = products[i].name
-    const status = products[i].status
+  const wastage = productNames.map((productName) => {
+    const total = products.filter((product) => product.name === productName)
+    const discarded = total.filter((product) => product.status === 'discarded')
 
-    if (product in totals) {
-      totals[product][status]++
-    } else {
-      totals[product] = { name: product, discarded: 0, open: 0, used: 0 }
-      totals[product][status]++
-    }
-  }
+    const wasted = discarded.length / total.length
 
-  // Calculate percentage wastage for each product
-  Object.keys(totals).forEach((product) => {
-    const wasted =
-      totals[product].discarded === 0 || totals[product].used === 0
-        ? 0
-        : totals[product].open /
-          (totals[product].discarded +
-            totals[product].used +
-            totals[product].open)
-
-    totals[product].wasted = wasted
+    return { name: productName, wasted }
   })
 
+  console.log('wastage', wastage)
+
   // Sort products by percentage wasted and take the top 3
-  const top = Object.values(totals)
-    .map((product) => {
-      return { name: product.name, wasted: product.wasted }
-    })
-    .sort((a, b) => b.wasted - a.wasted)
-    .slice(0, 3)
+  const top = wastage.sort((a, b) => b.wasted - a.wasted).slice(0, 3)
 
   return top
 }
