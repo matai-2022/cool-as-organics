@@ -37,7 +37,7 @@ function ViewProducts() {
     <>
       <h1 className="mb-4 mt-4 text-center text-3xl">Current items</h1>
       <div className="h-screen flex justify-center bg-zinc-50">
-        <table className="w-11/12 border-collapse border rounded border-zinc-200 bg-white mt-4">
+        <table className="w-11/12 h-fit border-collapse border rounded border-zinc-200 bg-white mt-4">
           <thead className="border-b-2 border-zinc-200">
             <tr className="text-left">
               {headers.map((header) => {

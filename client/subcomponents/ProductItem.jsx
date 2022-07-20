@@ -21,7 +21,7 @@ function ProductItem(props) {
   return (
     <tr
       key={product.id}
-      className="h-10 border border-zinc leading-10 border-collapse "
+      className="leading-10 border border-zinc border-collapse "
     >
       <td className="px-4">{product.name}</td>
 
