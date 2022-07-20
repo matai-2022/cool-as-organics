@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react'
 import{ Link} from 'react-router-dom'
 
 
-const menu = [{
-  name: 'Home',
-  route: '/'
-}, {
-  name: 'Add', route: '/products/add'
-}, {name: 'View', route: '/products/view'}, {name: 'Snap', route: '/products/add/photo'}, {name: 'Stats', route: '/products/stats'}]
+const menu = [
+  {name: 'Home', route: '/'}, 
+  {name: 'Add', route: '/products/add'},
+  {name: 'Snap', route: '/products/add/photo'},
+  {name: 'View', route: '/products/view'},
+  {name: 'Stats', route: '/products/stats'}]
 
 function Nav() {
   const [activeTab, setActiveTab] = useState('')
