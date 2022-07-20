@@ -35,7 +35,9 @@ function getTopWasted(products) {
       totals[product].discarded === 0 || totals[product].used === 0
         ? 0
         : totals[product].open /
-          (totals[product].discarded + totals[product].used)
+          (totals[product].discarded +
+            totals[product].used +
+            totals[product].open)
 
     totals[product].wasted = wasted
   })

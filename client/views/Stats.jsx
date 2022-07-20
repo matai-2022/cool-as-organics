@@ -39,7 +39,7 @@ function Stats() {
                 <span className="w-6 h-6 border-2 rounded-full flex items-center justify-center bg-zinc-200 mr-4 ">
                   {i + 1}
                 </span>{' '}
-                {product.name} {`${product.wasted * 100} %`}
+                {product.name} {`${Math.round(product.wasted * 100)} %`}
               </li>
             )
           })}

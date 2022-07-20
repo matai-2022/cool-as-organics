@@ -18,22 +18,28 @@ function ProductItem(props) {
   }
 
   return (
-    <tr key={product.id} className='border border-zinc leading-10 border-collapse'>
-      <td className='px-4'>{product.name}</td>
+    <tr
+      key={product.id}
+      className="border border-zinc leading-10 border-collapse"
+    >
+      <td className="px-4">{product.name}</td>
 
-      <td className='px-4'>{moment(product.expiryDate).format('D MMM')}</td>
-      <td className='px-4'>{`${product.wastage * 100} %`}</td>
-
-      <td>
-        <button name="discarded" onClick={handleClick} className='px-4'>
-          <img src='/images/rubbish-bin.png' alt='rubbish icon' className='h-4 w-4'/>
-        </button>
-        <button name="used" onClick={handleClick} className=''>
-          <img src='/images/tick.png' alt='tick icon' className='h-4 w-4'/>
-        </button>
+      <td className="px-4">
+        {moment(product.expiryDate).format('ddd D MMM YYYY')}
       </td>
 
-
+      <td className="text-right pr-4">
+        <button name="discarded" onClick={handleClick} className="px-4">
+          <img
+            src="/images/rubbish-bin.png"
+            alt="rubbish icon"
+            className="h-4 w-4"
+          />
+        </button>
+        <button name="used" onClick={handleClick} className="">
+          <img src="/images/tick.png" alt="tick icon" className="h-4 w-4" />
+        </button>
+      </td>
     </tr>
   )
 }
