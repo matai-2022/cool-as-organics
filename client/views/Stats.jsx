@@ -20,8 +20,8 @@ function Stats() {
           <ul>
             {topPurchased.map((product, i) => {
               return (
-                <li key={product} className="flex justify-start p-2 pl-4">
-                  <div className=" w-6 h-6 border-2 rounded-full flex items-center justify-center bg-zinc-200 ">
+                <li key={product} className="flex justify-start p-2 pl-4 ">
+                  <div className=" w-6 h-6 border-2 rounded-full flex items-center justify-center bg-zinc-200 mr-4 ">
                     {i + 1}
                   </div>
                   {product}
@@ -36,7 +36,7 @@ function Stats() {
           {topWasted.map((product, i) => {
             return (
               <li key={product.name} className="flex justify-start p-2 pl-4">
-                <span className="w-6 h-6 border-2 rounded-full flex items-center justify-center bg-zinc-200 ">
+                <span className="w-6 h-6 border-2 rounded-full flex items-center justify-center bg-zinc-200 mr-4 ">
                   {i + 1}
                 </span>{' '}
                 {product.name} {`${product.wasted * 100} %`}
