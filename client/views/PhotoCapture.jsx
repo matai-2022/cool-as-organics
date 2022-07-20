@@ -73,8 +73,7 @@ function PhotoCapture() {
   return (
   <div className='h-screen flex flex-col items-center bg-black'>
     {/* Camera */}
-    {/* scale-x-[-1] class mirrors the camera display for a better user experience */}
-    <video ref={videoRef} autoPlay className='scale-x-[-1]' />
+    <video ref={videoRef} autoPlay />
 
     <Conditional condition={state.status !== 'LOADING'}>
       {/* Shutter button */}
