@@ -1,16 +1,29 @@
-import React from 'react'
-import{Link}from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import{ Link} from 'react-router-dom'
+
+
+const menu = [{
+  name: 'Home',
+  route: '/'
+}, {
+  name: 'Add', route: '/products/add'
+}, {name: 'View', route: '/products/view'}, {name: 'Snap', route: '/products/add/photo'}, {name: 'Stats', route: '/products/stats'}]
 
 function Nav() {
+  const [activeTab, setActiveTab] = useState('')
+
   return (
-  <>
-  <nav className="flex justify-end mt-4 px-3 pr-10 space-x-4 underline">
-    <Link to="/">Home</Link>
-    <Link to="/products/add">Add Product</Link>
-    <Link to="/products/view">View Products</Link>
-  </nav>
- 
-  </>)
+    <div className='flex justify-between font-medium text-black bg-white px-4 pb-2'>
+    
+    {menu.map(item => { return (
+      <div key={item.name} className={`${item.name === activeTab && 'border-b-2 border-lime-400'} flex flex-row justify-center py-4 w-1/5`}>
+    <Link to={item.route}>
+      <button onClick={(event) => {setActiveTab(item.name)}} type='button' className='font-medium '>{item.name}</button>
+    </Link>
+    </div>
+    )})}
+    </div>
+  )
 }
 
 export default Nav
