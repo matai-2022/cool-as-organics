@@ -18,20 +18,17 @@ function AddProductForm({initialValues, handleSubmit}) {
 
   return (
     <>
-      <h1 className='my-4 text-3xl text-center'>Add a product</h1>
-
-      <Formik
-    initialValues={initialValues}
-    onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}>
 
     <div className='h-screen flex flex-col items-center bg-zinc-50'>
 
     <Form className='w-11/12 border rounded border-zinc-200 bg-white mt-4 mb-4'>
-
         <label className='label block pb-4 pt-2 ml-4'>
         Name
         <Field name='name' type='text' 
-        className='border border-zinc-200 block py-2 px-8 w-2/3'/>
+        className='border border-zinc-200 block py-2 px-8 w-2/3 hover:border-0'/>
         </label>
 
         <label className='label block pb-4 ml-4'>

@@ -102,9 +102,9 @@ function PhotoCapture() {
     <Conditional condition={state.status === 'PRODUCT_PREDICTED'}>
       <Modal>
         <div className='h-full w-full flex flex-col bg-white'>
-          <button className='self-end mt-4 mr-4'
+          <button className='self-end mt-4 mr-4 rotate-45 text-2xl'
                   onClick={() => {dispatch({type: 'IDLE', status: 'IDLE'})}}>
-                  x</button>
+                  +</button>
           <AddProductForm initialValues={state.product} handleSubmit={handleSubmit} />
         </div>
       </Modal>

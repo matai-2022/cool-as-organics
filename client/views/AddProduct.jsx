@@ -1,10 +1,15 @@
 import React from 'react'
+import {useLocation} from 'react-router-dom'
 
 import { postProduct} from '../apis/products'
 
 import AddProductForm from '../subcomponents/AddProductForm.jsx'
 
 function AddProduct() {
+  const location = useLocation()
+  console.log(location.pathname)
+
+
   const initialValues = {
     name: '',
     expiryDate: '',
@@ -14,7 +19,7 @@ function AddProduct() {
     compartment: ''
   }
 
-  async function handleSubmit(values, {resetForm}) {
+  async function handleSubmit(values, {resetForm}) {  
     const {lifespan, ...product} = values
 
     try {
@@ -29,7 +34,10 @@ function AddProduct() {
   }
 
   return (
-    <AddProductForm initialValues={initialValues} handleSubmit={handleSubmit}/>
+    <>
+      <h1 className='my-4 text-3xl text-center'>Add a product</h1>
+      <AddProductForm initialValues={initialValues} handleSubmit={handleSubmit}/>
+    </>
   )
 }
 

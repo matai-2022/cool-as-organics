@@ -10,7 +10,7 @@ import calculateWastage from '../utils/calculateWastage'
 
 import ProductItem from '../subcomponents/ProductItem.jsx'
 
-const headers = ['Name','Expiry','Wastage', 'Status']
+const headers = ['Name','Expiry','Wastage', 'Bin/Use']
 
 function ViewProducts() {
   const [products, setProducts] = useState([])
@@ -48,9 +48,9 @@ function ViewProducts() {
   return (
     <>
     <h1 className='mb-4 mt-4 text-center text-3xl'>Current items</h1>
-    <div className='flex justify-center'>
-      <table className= 'w-11/12 border rounded border-zinc-200 bg-white mt-4'>
-        <thead className='border-b-2 border-zinc'>
+    <div className='h-screen flex justify-center bg-zinc-50'>
+      <table className= 'w-11/12 border-collapse border rounded border-zinc-200 bg-white mt-4'>
+        <thead className='border-b-2 border-zinc-200'>
           <tr className='text-left'>
             {headers.map(header => {return (
             <th className='leading-10 font-medium px-4 text-sm' 

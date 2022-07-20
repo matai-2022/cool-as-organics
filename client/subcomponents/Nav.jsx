@@ -18,7 +18,7 @@ function Nav() {
     {menu.map(item => { return (
       <div key={item.name} className={`${item.name === activeTab && 'border-b-2 border-lime-400'} flex flex-row justify-center py-4 w-1/5`}>
     <Link to={item.route}>
-      <button onClick={(event) => {setActiveTab(item.name)}} type='button' className='font-medium '>{item.name}</button>
+      <button onClick={() => {setActiveTab(item.name)}} type='button' className='font-medium '>{item.name}</button>
     </Link>
     </div>
     )})}

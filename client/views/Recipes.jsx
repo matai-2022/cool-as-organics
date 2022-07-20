@@ -10,31 +10,35 @@ function Recipes() {
 
   useEffect(() => {
     getRecipes(ingredient)
-      .then((recipes) => {
-        setRecipes(recipes)
+      .then((data) => {
+        setRecipes(data.results)
       })
       .catch((error) => console.error(error.message))
   }, [])
 
   return !recipes ? (
-    <p> loading </p>
+  <p> loading </p>
   ) : (
-    <div>
-      <ul>
-        {recipes.results.map((item) => (
-          <li key={item.id}>
-            {item.name}
-            <img src={item.thumbnail_url} alt={item.thumbnail_url_text} />
-            <ul>
-              {item.tags.map((tag) => {
-                if (tag.type === 'dietary')
-                  return <li key={tag.name}>{tag.name}</li>
-              })}
-            </ul>
-          </li>
-        ))}
-      </ul>
+  <>
+  <h1 className='my-4 text-3xl text-center'>Recipes</h1>
+
+  <div className='h-screen flex flex-col items-center bg-zinc-50'>
+  {recipes.map((recipe) => (
+    <div key={recipe.id} className='w-11/12 border rounded border-zinc-200 bg-white mt-4'>
+      <img src={recipe.thumbnail_url} alt={recipe.thumbnail_url_text} className='h-48 w-full object-cover' />
+      <div className='px-4 py-4'>
+        <h2 className='text-xl font-medium'>{recipe.name}</h2>
+        <ul className='mt-4 flex flex-row flex-wrap'>
+        {recipe.tags.filter(tag => tag.type === 'dietary').map(tag => {
+          return <li key={tag.name} className='mr-1 mb-1 px-1 py-1 border rounded border-zinc-400 text-small text-zinc-400 leading-none'>{tag.name}</li>
+        })}
+        </ul>
+      </div>
     </div>
+  ))}
+
+  </div>
+  </>
   )
 }
 

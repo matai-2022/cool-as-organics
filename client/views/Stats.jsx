@@ -10,7 +10,7 @@ function Stats() {
     setTopPurchased(await getTopPurchasedProducts())
     setTopWasted(await getTopWastedProducts())
   }, [])
-  console.log(topWasted)
+
   return (
     <div>
       <h1 className="mb-4 mt-4 text-center text-3xl"> Stats </h1>
